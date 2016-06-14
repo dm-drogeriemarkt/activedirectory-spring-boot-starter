@@ -519,7 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="details">
 <span id="author" class="author">Starter for configuring activedirectory authentication, optimized for service to service
         communication via caching of credentials.</span><br>
-<span id="revnumber">version 0.1.0-SNAPSHOT</span>
+    <span id="revnumber">version 1.1.0-SNAPSHOT</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -527,6 +527,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_runtime_dependencies">Runtime Dependencies</a></li>
 <li><a href="#_installation">Installation</a></li>
 <li><a href="#_usage">Usage</a></li>
+    <li><a href="#_role_mapping">Role Mapping</a></li>
 <li><a href="#_configuration">Configuration</a></li>
 </ul>
 </div>
@@ -566,7 +567,7 @@ table.CodeRay td.code>pre{padding:0}
 <pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>de.filiadata.auth<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>activedirectory-spring-boot-starter<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>0.1.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>1.1.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -593,22 +594,7 @@ unless you&#8217;re already configuring an <code>AuthenticationManagerBuilder</c
 <div class="listingblock">
 <div class="title">Adding the AuthenticationProvider</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-</pre></td>
-  <td class="code"><pre><span class="annotation">@Configuration</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Configuration</span>
 <span class="directive">public</span> <span class="type">class</span> <span class="class">ActiveDirectorySampleConfiguration</span> {
 
     <span class="annotation">@Autowired</span>
@@ -620,8 +606,7 @@ unless you&#8217;re already configuring an <code>AuthenticationManagerBuilder</c
         auth.authenticationProvider(provider);
     }
 
-}</pre></td>
-</tr></table></code></pre>
+}</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -635,6 +620,47 @@ unless you&#8217;re already configuring an <code>AuthenticationManagerBuilder</c
 </div>
 </div>
 <div class="sect1">
+    <h2 id="_role_mapping">Role Mapping</h2>
+    <div class="sectionbody">
+        <div class="paragraph">
+            <p>All ActiveDirectory groups will be converted to spring roles.
+                The role name will be the group name converted to uppercase, prefixed with <code>ROLE_</code>.
+                E.g. <code>SecDE-Mac-Client-Admins</code> will be mapped to <code>ROLE_SECDE-MAC-CLIENT-ADMINS</code>.
+            </p>
+        </div>
+        <div class="paragraph">
+            <p>To use the role in your app take the following configuration as an example:</p>
+        </div>
+        <div class="listingblock">
+            <div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Configuration</span>
+<span class="annotation">@Order</span>(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">RoleSampleConfiguration</span> <span
+            class="directive">extends</span> WebSecurityConfigurerAdapter{
+
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="type">void</span> configure(HttpSecurity http) <span
+            class="directive">throws</span> <span class="exception">Exception</span> {
+        http.antMatcher(<span class="string"><span class="delimiter">&quot;</span><span class="content">/**</span><span
+            class="delimiter">&quot;</span></span>)
+                .authorizeRequests()
+                .anyRequest().hasRole(<span class="string"><span class="delimiter">&quot;</span><span class="content">SECDE-MAC-CLIENT-ADMINS</span><span
+            class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+    }
+}</code></pre>
+            </div>
+        </div>
+        <div class="colist arabic">
+            <table>
+                <tr>
+                    <td><i class="conum" data-value="1"></i><b>1</b></td>
+                    <td>Note that when using <code>hasRole</code> the <code>ROLE_</code> prefix has to be omitted.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+    <div class="sect1">
 <h2 id="_configuration">Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -694,8 +720,8 @@ Consult the sample <code>ehcache.xml</code> below for default values.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.1.0-SNAPSHOT<br>
-Last updated 2016-06-14 15:50:11 CEST
+    Version 1.1.0-SNAPSHOT<br>
+    Last updated 2016-06-15 00:35:03 CEST
 </div>
 </div>
 </body>

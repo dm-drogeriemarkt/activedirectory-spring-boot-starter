@@ -39,12 +39,26 @@ unless you're already configuring an `AuthenticationManagerBuilder`. Consult the
 
 If you're using spring security < 4.1.0 or want to control the registration, then use the following configuration as a baseline:
 
-[source,java,conum,data-value=2]
+[source,java]
 .Adding the AuthenticationProvider
 ----
 include::{project-basedir}/src/test/java/de/filiadata/auth/activedirectory/ActiveDirectorySampleConfiguration.java[tags=sample]
 ----
 <1> `@Qualifier` annotation to easily inject the auto-configured `AuthenticationProvider`
+
+== Role Mapping
+
+All ActiveDirectory groups will be converted to spring roles.
+The role name will be the group name converted to uppercase, prefixed with `ROLE_`.
+E.g. `sample-admins` will be mapped to `ROLE_SAMPLE-ADMINS`.
+
+To use the role in your app take the following configuration as an example:
+
+[source,java]
+----
+include::{project-basedir}/src/test/java/de/filiadata/auth/activedirectory/RoleSampleConfiguration.java[tags=sample]
+----
+<1> Note that when using `hasRole` the `ROLE_` prefix has to be omitted.
 
 == Configuration
 
