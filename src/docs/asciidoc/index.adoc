@@ -1,0 +1,68 @@
+:revnumber: {project-version}
+
+= {name}
+{description}
+:toc: left
+:icons: font
+
+== Runtime Dependencies
+
+* Java >= `1.8`
+* Spring Boot >= `1.3.0.RELEASE`
+
+The module was compiled against :
+
+* Spring Boot Actuator = `{spring-boot-version}`
+
+== Installation
+
+[source,xml,subs="verbatim,attributes"]
+.Using the starter
+----
+    <dependency>
+        <groupId>{project-groupId}</groupId>
+        <artifactId>{project-artifactId}</artifactId>
+        <version>{project-version}</version>
+    </dependency>
+----
+The starter contains all required dependencies, including `spring-boot-starter-cache` and `ehcache`.
+A default `ehcache.xml` is delivered with the module, which should suffice for most use cases.
+
+== Usage
+
+The module uses spring boot's auto-configuration mechanism to register an `AuthenticationProvider`.
+
+
+If you're using spring security >= 4.1.0 the `AuthenticationProvider` will be registered by default,
+unless you're already configuring an `AuthenticationManagerBuilder`. Consult the
+ http://docs.spring.io/spring-security/site/docs/4.1.0.RELEASE/reference/htmlsingle/#jc-authentication-authenticationprovider[spring security documentation] for more details.
+
+If you're using spring security < 4.1.0 or want to control the registration, then use the following configuration as a baseline:
+
+[source,java,conum,data-value=2]
+.Adding the AuthenticationProvider
+----
+include::{project-basedir}/src/test/java/de/filiadata/auth/activedirectory/ActiveDirectorySampleConfiguration.java[tags=sample]
+----
+<1> `@Qualifier` annotation to easily inject the auto-configured `AuthenticationProvider`
+
+== Configuration
+
+No special configuration is necessary. If you're already using ehcache in your application, you'll need to configure a cache named `authCache`.
+Consult the sample `ehcache.xml` below for default values.
+
+[source,xml]
+.The default ehcache.xml
+----
+include::{project-basedir}/src/main/resources/ehcache.xml[]
+----
+
+.The following properties can be configured
+[[properties]]
+|===
+|Name|Type|Default value|Description
+
+|**security.activedirectory.cache-enabled**|`java.lang.Boolean`|`true`|Enable caching of authentication.
+|**security.activedirectory.domain**|`java.lang.String`|`SAMPLE.INC`|The AD domain that users authenticate against.
+|**security.activedirectory.url**|`java.lang.String`|`ldaps://sample:636`|URL that points to an ActiveDirectory instance. Multiple URLs can be provided, separated by a single whitespace character.
+|===
