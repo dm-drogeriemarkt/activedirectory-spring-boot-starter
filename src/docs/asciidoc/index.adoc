@@ -51,6 +51,7 @@ include::{project-basedir}/src/test/java/de/filiadata/auth/activedirectory/Activ
 All ActiveDirectory groups will be converted to spring roles.
 The role name will be the group name converted to uppercase, prefixed with `ROLE_`.
 E.g. `sample-admins` will be mapped to `ROLE_SAMPLE-ADMINS`.
+Additionally, the user will be assigned the role `ADMIN` which is the default used by actuator endpoints.
 
 To use the role in your app take the following configuration as an example:
 

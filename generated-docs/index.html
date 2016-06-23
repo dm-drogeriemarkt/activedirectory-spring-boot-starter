@@ -626,7 +626,8 @@ unless you&#8217;re already configuring an <code>AuthenticationManagerBuilder</c
             <p>All ActiveDirectory groups will be converted to spring roles.
                 The role name will be the group name converted to uppercase, prefixed with <code>ROLE_</code>.
                 E.g. <code>SecDE-Mac-Client-Admins</code> will be mapped to <code>ROLE_SECDE-MAC-CLIENT-ADMINS</code>.
-            </p>
+                Additionally, the user will be assigned the role <code>ADMIN</code> which is the default used by
+                actuator endpoints.</p>
         </div>
         <div class="paragraph">
             <p>To use the role in your app take the following configuration as an example:</p>
@@ -636,7 +637,7 @@ unless you&#8217;re already configuring an <code>AuthenticationManagerBuilder</c
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Configuration</span>
 <span class="annotation">@Order</span>(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">RoleSampleConfiguration</span> <span
-            class="directive">extends</span> WebSecurityConfigurerAdapter{
+            class="directive">extends</span> WebSecurityConfigurerAdapter {
 
     <span class="annotation">@Override</span>
     <span class="directive">protected</span> <span class="type">void</span> configure(HttpSecurity http) <span
@@ -648,7 +649,7 @@ unless you&#8217;re already configuring an <code>AuthenticationManagerBuilder</c
             class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
     }
 }</code></pre>
-            </div>
+</div>
         </div>
         <div class="colist arabic">
             <table>
@@ -721,7 +722,7 @@ Consult the sample <code>ehcache.xml</code> below for default values.</p>
 <div id="footer">
 <div id="footer-text">
     Version 1.1.0-SNAPSHOT<br>
-    Last updated 2016-06-15 00:35:03 CEST
+    Last updated 2016-06-23 11:16:57 CEST
 </div>
 </div>
 </body>
