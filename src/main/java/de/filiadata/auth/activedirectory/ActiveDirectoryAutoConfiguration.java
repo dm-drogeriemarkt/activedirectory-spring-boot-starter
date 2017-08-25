@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
-import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
+import org.springframework.security.ldap.authentication.ad.Hotfix3960ActiveDirectoryLdapAuthenticationProvider;
 
 import static de.filiadata.auth.activedirectory.ActiveDirectoryProperties.ACTIVEDIRECTORY_PROPERTIES_PREFIX;
 
@@ -29,8 +29,11 @@ public class ActiveDirectoryAutoConfiguration {
     @ConditionalOnMissingBean
     @ConfigurationProperties(ACTIVEDIRECTORY_PROPERTIES_PREFIX)
     public CachingAuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
-        ActiveDirectoryLdapAuthenticationProvider provider;
-        provider = new ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), properties.getUrl());
+//        ActiveDirectoryLdapAuthenticationProvider provider;
+//        provider = new ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), properties.getUrl());
+        Hotfix3960ActiveDirectoryLdapAuthenticationProvider provider;
+        provider = new Hotfix3960ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), properties.getUrl());
+        provider.setSearchFilter("(&(objectClass=user)(samAccountName={1}))");
         provider.setAuthoritiesMapper(authoritiesMapper());
         return new CachingAuthenticationProvider(provider);
     }
