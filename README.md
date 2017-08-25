@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dm-drogeriemarkt/activedirectory-spring-boot-starter.svg?branch=master)](https://travis-ci.org/dm-drogeriemarkt/activedirectory-spring-boot-starter)
+
 * [Documentation HTML](generated-docs/index.html?raw)
 
 Copyright (c) 2017 dm-drogerie markt GmbH & Co. KG, https://dm.de
