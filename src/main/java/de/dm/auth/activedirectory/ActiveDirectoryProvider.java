@@ -1,4 +1,4 @@
-package de.filiadata.auth.activedirectory;
+package de.dm.auth.activedirectory;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;

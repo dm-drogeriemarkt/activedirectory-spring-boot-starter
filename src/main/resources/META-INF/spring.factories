@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=de.filiadata.auth.activedirectory.ActiveDirectoryAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=de.dm.auth.activedirectory.ActiveDirectoryAutoConfiguration

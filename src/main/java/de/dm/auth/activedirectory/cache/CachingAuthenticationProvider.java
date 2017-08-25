@@ -1,4 +1,4 @@
-package de.filiadata.auth.activedirectory.cache;
+package de.dm.auth.activedirectory.cache;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

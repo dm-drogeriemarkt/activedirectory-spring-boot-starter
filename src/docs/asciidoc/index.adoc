@@ -42,7 +42,7 @@ If you're using spring security < 4.1.0 or want to control the registration, the
 [source,java]
 .Adding the AuthenticationProvider
 ----
-include::{project-basedir}/src/test/java/de/filiadata/auth/activedirectory/ActiveDirectorySampleConfiguration.java[tags=sample]
+include::{project-basedir}/src/test/java/de/dm/auth/activedirectory/ActiveDirectorySampleConfiguration.java[tags=sample]
 ----
 <1> `@Qualifier` annotation to easily inject the auto-configured `AuthenticationProvider`
 
@@ -57,7 +57,7 @@ To use the role in your app take the following configuration as an example:
 
 [source,java]
 ----
-include::{project-basedir}/src/test/java/de/filiadata/auth/activedirectory/RoleSampleConfiguration.java[tags=sample]
+include::{project-basedir}/src/test/java/de/dm/auth/activedirectory/RoleSampleConfiguration.java[tags=sample]
 ----
 <1> Note that when using `hasRole` the `ROLE_` prefix has to be omitted.
 

@@ -1,4 +1,4 @@
-package de.filiadata.auth.activedirectory.cache;
+package de.dm.auth.activedirectory.cache;
 
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

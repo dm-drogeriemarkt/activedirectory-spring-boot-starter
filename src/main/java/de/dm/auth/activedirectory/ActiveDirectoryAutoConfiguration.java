@@ -1,7 +1,7 @@
-package de.filiadata.auth.activedirectory;
+package de.dm.auth.activedirectory;
 
-import de.filiadata.auth.activedirectory.cache.AuthenticationCacheKeyGenerator;
-import de.filiadata.auth.activedirectory.cache.CachingAuthenticationProvider;
+import de.dm.auth.activedirectory.cache.AuthenticationCacheKeyGenerator;
+import de.dm.auth.activedirectory.cache.CachingAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -14,8 +14,6 @@ import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMap
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.ldap.authentication.ad.Hotfix3960ActiveDirectoryLdapAuthenticationProvider;
 
-import static de.filiadata.auth.activedirectory.ActiveDirectoryProperties.ACTIVEDIRECTORY_PROPERTIES_PREFIX;
-
 @Configuration
 @EnableCaching
 @EnableConfigurationProperties(ActiveDirectoryProperties.class)
@@ -27,7 +25,7 @@ public class ActiveDirectoryAutoConfiguration {
     @Bean
     @ActiveDirectoryProvider
     @ConditionalOnMissingBean
-    @ConfigurationProperties(ACTIVEDIRECTORY_PROPERTIES_PREFIX)
+    @ConfigurationProperties(ActiveDirectoryProperties.ACTIVEDIRECTORY_PROPERTIES_PREFIX)
     public CachingAuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
 //        ActiveDirectoryLdapAuthenticationProvider provider;
 //        provider = new ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), properties.getUrl());

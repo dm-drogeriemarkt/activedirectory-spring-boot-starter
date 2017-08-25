@@ -1,4 +1,4 @@
-package de.filiadata.auth.activedirectory;
+package de.dm.auth.activedirectory;
 
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
