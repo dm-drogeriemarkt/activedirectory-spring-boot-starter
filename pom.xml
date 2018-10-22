@@ -40,7 +40,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
+        <version>2.0.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -49,11 +49,11 @@
         <java.version>1.8</java.version>
 
         <jacoco.version>0.7.4.201502262128</jacoco.version>
-        <maven-release-plugin.version>2.5.2</maven-release-plugin.version>
-        <asciidoctor.maven.plugin.version>1.5.6</asciidoctor.maven.plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <asciidoctor.maven.plugin.version>1.5.7.1</asciidoctor.maven.plugin.version>
         <asciidoctorj.pdf.version>1.5.0-alpha.16</asciidoctorj.pdf.version>
-        <asciidoctorj.version>1.5.6</asciidoctorj.version>
-        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <asciidoctorj.version>1.5.7</asciidoctorj.version>
+        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
 
         <sonar.exclusions>**/*Config*,**/*Properties*,**/Hotfix*</sonar.exclusions>
     </properties>
