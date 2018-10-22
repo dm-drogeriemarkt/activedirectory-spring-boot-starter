@@ -32,6 +32,7 @@ A default `ehcache.xml` is delivered with the module, which should suffice for m
 
 The module uses spring boot's auto-configuration mechanism to register an `AuthenticationProvider`.
 
+The auto-configuration will also provide a spring boot health indicator for active directory connection (ldapHealthIndicator).
 
 If you're using spring security >= 4.1.0 the `AuthenticationProvider` will be registered by default,
 unless you're already configuring an `AuthenticationManagerBuilder`. Consult the

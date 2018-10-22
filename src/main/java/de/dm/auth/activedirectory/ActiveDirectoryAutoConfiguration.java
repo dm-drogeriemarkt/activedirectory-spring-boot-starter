@@ -10,6 +10,8 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.ldap.authentication.ad.Hotfix3960ActiveDirectoryLdapAuthenticationProvider;
@@ -47,6 +49,18 @@ public class ActiveDirectoryAutoConfiguration {
     @Bean
     public KeyGenerator authKeyGenerator() {
         return new AuthenticationCacheKeyGenerator();
+    }
+
+    @Bean
+    public LdapContextSource ldapContextSource() {
+        LdapContextSource ldapContextSource = new LdapContextSource();
+        ldapContextSource.setUrl(properties.getUrl());
+        return ldapContextSource;
+    }
+
+    @Bean
+    public LdapTemplate ldapTemplateForLdapHealthCheck() {
+        return new LdapTemplate(ldapContextSource());
     }
 
 }
