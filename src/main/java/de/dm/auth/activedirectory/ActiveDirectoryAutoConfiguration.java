@@ -4,6 +4,7 @@ import de.dm.auth.activedirectory.cache.AuthenticationCacheKeyGenerator;
 import de.dm.auth.activedirectory.cache.CachingAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
@@ -19,6 +20,7 @@ import org.springframework.security.ldap.authentication.ad.Hotfix3960ActiveDirec
 @Configuration
 @EnableCaching
 @EnableConfigurationProperties(ActiveDirectoryProperties.class)
+@ConditionalOnProperty(prefix = ActiveDirectoryProperties.ACTIVEDIRECTORY_PROPERTIES_PREFIX, name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ActiveDirectoryAutoConfiguration {
 
     @Autowired
