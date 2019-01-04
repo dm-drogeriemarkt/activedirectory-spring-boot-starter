@@ -532,7 +532,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="details">
 <span id="author" class="author">Starter for configuring activedirectory authentication, optimized for service to service
         communication via caching of credentials.</span><br>
-<span id="revnumber">version 2.1.0-SNAPSHOT</span>
+<span id="revnumber">version 2.2.1-SNAPSHOT</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -566,7 +566,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>Spring Boot Actuator = <code>2.0.6.RELEASE</code></p>
+<p>Spring Boot Actuator = <code>2.0.7.RELEASE</code></p>
 </li>
 </ul>
 </div>
@@ -581,7 +581,7 @@ table.CodeRay td.code>pre{padding:0}
 <pre class="CodeRay highlight"><code data-lang="xml">    <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>de.dm.auth<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>activedirectory-spring-boot-starter<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>2.1.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;version&gt;</span>2.2.1-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -686,7 +686,7 @@ Consult the sample <code>ehcache.xml</code> below for default values.</p>
          <span class="attribute-name">xsi:noNamespaceSchemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://ehcache.org/ehcache.xsd</span><span class="delimiter">&quot;</span></span>
          <span class="attribute-name">updateCheck</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">monitoring</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">autodetect</span><span class="delimiter">&quot;</span></span>
          <span class="attribute-name">dynamicConfig</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">authCache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">timeToLiveSeconds</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">30</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">maxEntriesLocalHeap</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;cache</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">authCacheX</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">timeToLiveSeconds</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">30</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">maxEntriesLocalHeap</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/ehcache&gt;</span></code></pre>
 </div>
 </div>
@@ -707,6 +707,12 @@ Consult the sample <code>ehcache.xml</code> below for default values.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>security.activedirectory.enabled</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable or disable the auto configuration.</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>security.activedirectory.cache-enabled</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.Boolean</code></p></td>
@@ -733,7 +739,7 @@ Consult the sample <code>ehcache.xml</code> below for default values.</p>
 <h2 id="_license">License</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (c) 2018 dm-drogerie markt GmbH &amp; Co. KG, <a href="https://dm.de" class="bare">https://dm.de</a></p>
+<p>Copyright (c) 2019 dm-drogerie markt GmbH &amp; Co. KG, <a href="https://dm.de" class="bare">https://dm.de</a></p>
 </div>
 <div class="paragraph">
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -761,8 +767,8 @@ SOFTWARE.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 2.1.0-SNAPSHOT<br>
-Last updated 2018-10-22 14:25:48 MESZ
+Version 2.2.1-SNAPSHOT<br>
+Last updated 2019-01-04 09:25:54 MEZ
 </div>
 </div>
 </body>
