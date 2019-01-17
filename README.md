@@ -1,5 +1,6 @@
 [![Maven Central](https://img.shields.io/maven-central/v/de.dm.auth/activedirectory-spring-boot-starter.svg)](https://mvnrepository.com/artifact/de.dm.auth/activedirectory-spring-boot-starter)
 [![Build Status](https://travis-ci.org/dm-drogeriemarkt/activedirectory-spring-boot-starter.svg?branch=master)](https://travis-ci.org/dm-drogeriemarkt/activedirectory-spring-boot-starter)
+[<img src="https://opensourcelogos.aws.dmtech.cloud/dmTECH_opensource_logo.svg" height="20" width="130">](https://dmtech.de/)
 
 * [Documentation PDF](generated-docs/index.pdf)
 
