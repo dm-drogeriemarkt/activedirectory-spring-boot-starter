@@ -5,7 +5,7 @@
 
     <groupId>de.dm.auth</groupId>
     <artifactId>activedirectory-spring-boot-starter</artifactId>
-    <version>2.2.1-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Activedirectory Spring Boot Starter</name>
@@ -26,8 +26,8 @@
         <developer>
             <organization>dm-drogerie markt GmbH &amp; Co. KG</organization>
             <organizationUrl>https://dm.de</organizationUrl>
-            <name>Fabian Buch</name>
-            <email>fabian.buch@dm.de</email>
+            <name>Andreas Badurczyk</name>
+            <email>andreas.badurczyk@dm.de</email>
         </developer>
         <developer>
             <organization>dm-drogerie markt GmbH &amp; Co. KG</organization>
