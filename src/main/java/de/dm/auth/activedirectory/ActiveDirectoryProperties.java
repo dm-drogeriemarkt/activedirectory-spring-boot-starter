@@ -12,7 +12,13 @@ public class ActiveDirectoryProperties {
     /**
      * URLs that point to ActiveDirectory instances. URLs can be provided with an Array of Strings.
      */
-    private String[] urls = {"ldaps://sample01:636","ldaps://sample02:636"};
+    private String[] urls = null;
+
+    /**
+     * @deprecated use "urls" property instead.
+     */
+    @Deprecated
+    private String url = null;
     /**
      * The AD domain that users authenticate against.
      */
@@ -30,6 +36,13 @@ public class ActiveDirectoryProperties {
     public String[] getUrls() { return urls; }
     public void setUrls(String[] urls) {
         this.urls = urls;
+    }
+
+    @Deprecated
+    public String getUrl() { return url; }
+    @Deprecated
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getDomain() {
