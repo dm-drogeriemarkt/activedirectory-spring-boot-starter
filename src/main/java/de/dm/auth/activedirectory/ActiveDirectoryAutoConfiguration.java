@@ -15,7 +15,9 @@ import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
-import org.springframework.security.ldap.authentication.ad.Hotfix3960ActiveDirectoryLdapAuthenticationProvider;
+import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
+
+import java.util.Hashtable;
 
 @Configuration
 @EnableCaching
@@ -31,10 +33,12 @@ public class ActiveDirectoryAutoConfiguration {
     @ConditionalOnMissingBean
     @ConfigurationProperties(ActiveDirectoryProperties.ACTIVEDIRECTORY_PROPERTIES_PREFIX)
     public CachingAuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
-//        ActiveDirectoryLdapAuthenticationProvider provider;
-//        provider = new ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), properties.getUrl());
-        Hotfix3960ActiveDirectoryLdapAuthenticationProvider provider;
-        provider = new Hotfix3960ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), properties.getUrl());
+        ActiveDirectoryLdapAuthenticationProvider provider;
+        provider = new ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), properties.getUrl());
+        Hashtable<String, Object> env = new Hashtable<>(); // NOSONAR - the javax.ldap api demands a hashtable
+        env.put("com.sun.jndi.ldap.connect.timeout", properties.getConnectTimeout());
+        env.put("com.sun.jndi.ldap.read.timeout", properties.getReadTimeout());
+        provider.setContextEnvironmentProperties(env);
         provider.setSearchFilter("(&(objectClass=user)(samAccountName={1}))");
         provider.setAuthoritiesMapper(authoritiesMapper());
         return new CachingAuthenticationProvider(provider);
