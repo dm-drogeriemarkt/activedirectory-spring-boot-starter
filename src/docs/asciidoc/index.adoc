@@ -81,7 +81,7 @@ include::{project-basedir}/src/main/resources/ehcache.xml[]
 |**security.activedirectory.enabled**|`java.lang.Boolean`|`true`|Enable or disable the auto configuration.
 |**security.activedirectory.cache-enabled**|`java.lang.Boolean`|`true`|Enable caching of authentication.
 |**security.activedirectory.domain**|`java.lang.String`|`SAMPLE.INC`|The AD domain that users authenticate against.
-|**security.activedirectory.url**|`java.lang.String`|`ldaps://sample01:636 ldaps://sample02:636`|URLs that point to one or more ActiveDirectory instances. Multiple URLs need to be separated by a single whitespace character.
+|**security.activedirectory.urls**|`java.lang.String[]`|`ldaps://sample01:636,ldaps://sample02:636`|URLs that point to one or more ActiveDirectory instances. Multiple URLs need to be separated by commas.
 |**security.activedirectory.connect-timeout**|`java.lang.String`|`1000`|The timeout in milliseconds establishing a connection against an ActiveDirectory instance.
 |**security.activedirectory.read-timeout**|`java.lang.String`|`5000`|The timeout in milliseconds waiting for a response from an ActiveDirectory instance.
 |===

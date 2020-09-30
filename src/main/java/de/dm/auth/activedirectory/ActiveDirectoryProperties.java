@@ -10,10 +10,9 @@ public class ActiveDirectoryProperties {
 
     public static final String ACTIVEDIRECTORY_PROPERTIES_PREFIX = "security.activedirectory";
     /**
-     * URLs that point to ActiveDirectory instances. One or more URLs can be provided,
-     * separated by a single whitespace character.
+     * URLs that point to ActiveDirectory instances. URLs can be provided with an Array of Strings.
      */
-    private String url = "ldaps://sample01:636 ldaps://sample02:636";
+    private String[] urls = {"ldaps://sample01:636","ldaps://sample02:636"};
     /**
      * The AD domain that users authenticate against.
      */
@@ -28,11 +27,9 @@ public class ActiveDirectoryProperties {
     private String readTimeout = "5000";
 
 
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String url) {
-        this.url = url;
+    public String[] getUrls() { return urls; }
+    public void setUrls(String[] urls) {
+        this.urls = urls;
     }
 
     public String getDomain() {

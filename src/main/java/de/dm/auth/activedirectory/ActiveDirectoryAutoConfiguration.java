@@ -34,7 +34,8 @@ public class ActiveDirectoryAutoConfiguration {
     @ConfigurationProperties(ActiveDirectoryProperties.ACTIVEDIRECTORY_PROPERTIES_PREFIX)
     public CachingAuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
         ActiveDirectoryLdapAuthenticationProvider provider;
-        provider = new ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), properties.getUrl());
+        String ldapUrls = String.join(" ", properties.getUrls());
+        provider = new ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), ldapUrls);
         Hashtable<String, Object> env = new Hashtable<>(); // NOSONAR - the javax.ldap api demands a hashtable
         env.put("com.sun.jndi.ldap.connect.timeout", properties.getConnectTimeout());
         env.put("com.sun.jndi.ldap.read.timeout", properties.getReadTimeout());
@@ -60,7 +61,7 @@ public class ActiveDirectoryAutoConfiguration {
     @Bean
     public LdapContextSource ldapContextSource() {
         LdapContextSource ldapContextSource = new LdapContextSource();
-        ldapContextSource.setUrl(properties.getUrl());
+        ldapContextSource.setUrls(properties.getUrls());
         return ldapContextSource;
     }
 

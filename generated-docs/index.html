@@ -726,10 +726,10 @@ Consult the sample <code>ehcache.xml</code> below for default values.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The AD domain that users authenticate against.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>security.activedirectory.url</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ldaps://sample01:636 ldaps://sample02:636</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URLs that point to one or more ActiveDirectory instances. Multiple URLs need to be separated by a single whitespace character.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>security.activedirectory.urls</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java.lang.String[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ldaps://sample01:636,ldaps://sample02:636</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URLs that point to one or more ActiveDirectory instances. Multiple URLs need to be separated by commas.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>security.activedirectory.connect-timeout</strong></p></td>
@@ -780,7 +780,7 @@ SOFTWARE.</p>
 <div id="footer">
 <div id="footer-text">
 Version 2.3.3-SNAPSHOT<br>
-Last updated 2020-09-30 12:53:13 CEST
+Last updated 2020-09-30 15:51:00 CEST
 </div>
 </div>
 </body>
