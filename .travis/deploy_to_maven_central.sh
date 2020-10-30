@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [ "$TRAVIS_BRANCH" = 'master' ] && [ "$TRAVIS_PULL_REQUEST" == 'false' ] || [ ! -z "$TRAVIS_TAG" ]; then
-    openssl aes-256-cbc -K $encrypted_2ff188d77b98_key -iv $encrypted_2ff188d77b98_iv -in .travis/codesigning.asc.enc -out .travis/codesigning.asc -d
+    openssl aes-256-cbc -K $encrypted_81c98acad902_key -iv $encrypted_81c98acad902_iv -in .travis/codesigning.asc.enc -out .travis/codesigning.asc -d
     gpg --fast-import .travis/codesigning.asc
 
     if [ ! -z "$TRAVIS_TAG" ]
