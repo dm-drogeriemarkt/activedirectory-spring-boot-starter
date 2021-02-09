@@ -34,8 +34,18 @@ public class ActiveDirectoryAutoConfiguration {
     @ConfigurationProperties(ActiveDirectoryProperties.ACTIVEDIRECTORY_PROPERTIES_PREFIX)
     public CachingAuthenticationProvider activeDirectoryLdapAuthenticationProvider() {
         ActiveDirectoryLdapAuthenticationProvider provider;
-        String ldapUrls = String.join(" ", properties.getUrls());
+
+        if (properties.getUrls() == null && properties.getUrl() == null) {
+            throw new IllegalArgumentException("'urls' property must be set.");
+        }
+        String ldapUrls = "";
+        if (properties.getUrls() != null) {
+            ldapUrls = String.join(" ", properties.getUrls());
+        } else {
+            ldapUrls = properties.getUrl();
+        }
         provider = new ActiveDirectoryLdapAuthenticationProvider(properties.getDomain(), ldapUrls);
+
         Hashtable<String, Object> env = new Hashtable<>(); // NOSONAR - the javax.ldap api demands a hashtable
         env.put("com.sun.jndi.ldap.connect.timeout", properties.getConnectTimeout());
         env.put("com.sun.jndi.ldap.read.timeout", properties.getReadTimeout());
@@ -61,7 +71,14 @@ public class ActiveDirectoryAutoConfiguration {
     @Bean
     public LdapContextSource ldapContextSource() {
         LdapContextSource ldapContextSource = new LdapContextSource();
-        ldapContextSource.setUrls(properties.getUrls());
+        if (properties.getUrls() == null && properties.getUrl() == null) {
+            throw new IllegalArgumentException("'urls' property must be set.");
+        }
+        if (properties.getUrls() != null) {
+            ldapContextSource.setUrls(properties.getUrls());
+        } else {
+            ldapContextSource.setUrl(properties.getUrl());
+        }
         return ldapContextSource;
     }
 
