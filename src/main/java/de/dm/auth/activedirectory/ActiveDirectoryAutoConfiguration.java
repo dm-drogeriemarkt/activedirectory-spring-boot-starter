@@ -49,7 +49,6 @@ public class ActiveDirectoryAutoConfiguration {
     public GrantedAuthoritiesMapper authoritiesMapper() {
         SimpleAuthorityMapper simpleAuthorityMapper = new SimpleAuthorityMapper();
         simpleAuthorityMapper.setConvertToUpperCase(true);
-        simpleAuthorityMapper.setDefaultAuthority("ROLE_ADMIN");
         return simpleAuthorityMapper;
     }
 
