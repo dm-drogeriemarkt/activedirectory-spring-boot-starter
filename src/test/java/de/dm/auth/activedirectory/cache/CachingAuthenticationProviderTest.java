@@ -1,5 +1,6 @@
 package de.dm.auth.activedirectory.cache;
 
+import de.dm.auth.activedirectory.ActiveDirectoryProperties;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Collections;
@@ -19,6 +21,7 @@ import java.util.Collections;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfiguration.class)
+@TestPropertySource(properties = { ActiveDirectoryProperties.ACTIVEDIRECTORY_PROPERTIES_PREFIX + ".urls=ldaps://example-ad01.inc:636,ldaps://example-ad02.inc:636"} )
 @CacheEvict
 public class CachingAuthenticationProviderTest {
 
